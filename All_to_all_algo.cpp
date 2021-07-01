@@ -39,7 +39,7 @@ int main()
 
 	communicate(p,s);		//communication
 
-	final_rotate(p,s);		//not done
+	final_rotate(p,s);		//final rotation
 
 }	
 
