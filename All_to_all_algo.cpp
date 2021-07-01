@@ -34,18 +34,12 @@ int main()
 
 	int p=6,s[p][100];
 	init(p,s);			//initialize values
-	
-	cout<<"\n";
-	printf("\n");
-			
-						 //Each column shifts down by i
+						 
 	int_shift(p,s);		//initial rotation
-  
-	 //print(p,s);		
-	 cout<<"\n";
+
 	communicate(p,s);		//communication
 
-	//final_rotate(p,s);		//not done
+	final_rotate(p,s);		//not done
 
 }	
 
@@ -94,7 +88,7 @@ void int_shift(int p, int s[][100])
 									
 										
  		        				   s[p - 1][j] = temp;  
- 		        				   print(p,s);
+ 		        				  print(p,s);
  		         				  pos--;
  	    			   		}  
 	}
@@ -116,23 +110,39 @@ void communicate(int p, int s[][100])
 				{
 					// Move data to (i+2k)
         	 			   for(int i=0;i<p;i++)
-								{
+							{
 	 	 			          	if ((i>> k)&1)
-								     	{
-          								int pos=i;
+									{
+          								int pos=(pow(2,k));
 										while(pos){
                         				int temp = s[i][p - 1];  
-                         					for(int j = p - 1; j > 0; j--)  						
-								            					 s[i][j] = s[i][j - 1];  
-                      
+                         					for(int j = p - 1; j > 0; j--)  
+                           							
+													 s[i][j] = s[i][j - 1];  
+  													
+													  
                        			 				 s[i][0] = temp;
                        			 				 print(p,s);
-            												pos--;
-    				    							 }			
-	        	   		    	}
-								}
+												pos--;
+    											 }	
+												
+	        	   		      		}
+							}
 				}	
 }
 
-//void final_rotate(int p, int s[][100]);
+void final_rotate(int p, int s[][100]){	
+
+	int t[6][100];
+	for(int j=0;j<p;j++)
+	        for(int i=0;i<p;i++)	
+				{
+					if(j-i<0)
+						t[(j-i+6)][j]=s[i][j];
+						t[j-i][j]=s[i][j];								
+				}	
+	print(p,t);
+		
+	
+}
 
